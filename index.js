@@ -4,7 +4,7 @@ const quotes = require("./Quotes");
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send('<h1>Insert Quote here<h1>');
+    res.send('<h1>Insert Quote here</h1>');
 });
 
 app.get('/quotes', (req, res) => {
@@ -21,6 +21,6 @@ app.get('/quotes/:id', (req, res) => {
     };    
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`Server started at port ${PORT}`));

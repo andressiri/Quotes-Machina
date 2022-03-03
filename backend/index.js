@@ -1,15 +1,19 @@
 const express = require("express");
+const path = require("path");
 const quotes = require("./Quotes");
 
 const app = express();
 
-app.get('/', (req, res) => {
-    const randomQuote = quotes[Math.floor(Math.random() * 10)];
-    res.send(`<h1>${randomQuote.quote}</h1><h3>${randomQuote.author}</h3>`);
-});
+app.use(express.static(path.join(__dirname, 'build')));
+
+//app.get('/', (req, res) => {
+//    const randomQuote = quotes[Math.floor(Math.random() * 10)];
+//    res.send(`<h1>${randomQuote.quote}</h1><h3>${randomQuote.author}</h3>`);
+//});
 
 app.get('/quotes', (req, res) => {
     const randomQuote = quotes[Math.floor(Math.random() * 10)];
+    console.log(randomQuote.quote);
     res.json(randomQuote);
 });
 

@@ -13,7 +13,6 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/quotes', (req, res) => {
     const randomQuote = quotes[Math.floor(Math.random() * 10)];
-    console.log(randomQuote.quote);
     res.json(randomQuote);
 });
 

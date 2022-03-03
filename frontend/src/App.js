@@ -20,7 +20,11 @@ function App() {
     setAuthor(jsonQuote.author);
   };
 
-  useEffect(() => {getVariables()}, []);
+  useEffect(() => {
+    getVariables()
+    setInterval(getVariables, 5000);
+    }, []
+  );
 
   return (
     <div className="App">

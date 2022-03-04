@@ -2,28 +2,19 @@ import React, {useContext, useEffect} from 'react';
 import {Context} from './Context.js';
 import logo from './logo.svg';
 import './App.css';
-
-async function fetchRandomQuote() {
-  const response = await fetch('/quotes');
-  let json = await response.json(); 
-  return json;
-};
+import useGetNewQuote from './functions/useGetNewQuote.js';
+import Last5Quotes from './components/last5Quotes/Last5Quotes.js';
 
 function App() {
   const {quoteTxt, auth} = useContext(Context);
   const [quoteText, setQuoteText] = quoteTxt;
   const [author, setAuthor] = auth;
-
-  async function getVariables() {
-    let jsonQuote = await fetchRandomQuote();
-    setQuoteText(jsonQuote.quote);
-    setAuthor(jsonQuote.author);
-  };
-
+  const getNewQuote = useGetNewQuote();
+  
   useEffect(() => {
-    getVariables()
-    setInterval(getVariables, 5000);
-    }, []
+    getNewQuote();
+    setInterval(getNewQuote, 5000); 
+  }, []
   );
 
   return (
@@ -32,6 +23,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <h1>{quoteText}</h1>
         <h3>{author}</h3>
+        <Last5Quotes />
       </header>
     </div>
   );

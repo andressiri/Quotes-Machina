@@ -17,9 +17,10 @@ app.get('/quotes', (req, res) => {
 });
 
 app.get('/quotes/:id', (req, res) => {
-    const found = quotes.some(quote => quote.id === parseInt(req.params.id));
+    const found = quotes.some(quote => quote.id === req.params.id);
     if (found) {
-        res.json(quotes.filter(quote => quote.id === parseInt(req.params.id)));
+        const auxArr = quotes.filter(quote => quote.id === req.params.id);
+        res.json(auxArr[0]);
     } else {
         res.status(400).json({msg: `No quote with the id of ${req.params.id}` })
     };    

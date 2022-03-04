@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import useGetNewQuote from './functions/useGetNewQuote.js';
 import Last5Quotes from './components/last5Quotes/Last5Quotes.js';
+import NewQuoteBtn from './components/NewQuoteBtn.js';
 
 function App() {
   const {quoteTxt, auth} = useContext(Context);
@@ -23,6 +24,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <h1>{quoteText}</h1>
         <h3>{author}</h3>
+        <NewQuoteBtn />
         <Last5Quotes />
       </header>
     </div>
